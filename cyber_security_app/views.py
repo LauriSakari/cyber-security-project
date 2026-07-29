@@ -5,6 +5,9 @@ from django.contrib.auth.models import User
 from django.shortcuts import redirect, render
 from django.utils import timezone
 
+#This line causes a CSFR vulnerability
+from django.views.decorators.csrf import csrf_exempt
+
 from .models import Message
 
 # Create your views here.
@@ -23,8 +26,9 @@ def messages(request):
             "count": message_list.count(),
         },
     )
-
-
+# This line causes a CSFR vulnerability
+@csrf_exempt
+# Fix is to remove this line and the import from the top of this file
 @login_required
 def send_message(request):
     if request.method != "POST":
