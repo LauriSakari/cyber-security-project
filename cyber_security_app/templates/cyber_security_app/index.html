@@ -1,0 +1,32 @@
+<!doctype html>
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'styles.css' %}">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Kiipeilyseuraa</title>
+<h1>Kiipeilyseuraa</h1>
+<h2>Tervetuloa!</h2>
+
+{% if request.user.is_authenticated %}
+  <a href="{% url 'logout' %}">Logout</a>
+{% else %}
+  <a href="{% url 'login' %}">Login</a>
+  <a href="{% url 'register' %}">Register</a>
+{% endif %}
+
+{% if request.user.is_authenticated %}
+    {% include "cyber_security_app/top_info.html" %}
+{% endif %}
+
+{% block error %}
+
+{% endblock %}
+
+{% block content %}
+{% if request.user.is_authenticated %}
+  <p>Tervetuloa kirjautuneelle käyttäjälle.</p>
+{% else %}
+  <p>Kirjaudu sisään tai rekisteröidy aloittaaksesi.</p>
+{% endif %}
+{% endblock %}

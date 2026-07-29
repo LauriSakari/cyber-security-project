@@ -1,0 +1,18 @@
+body {
+    margin: auto;
+    max-width: 80em;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    background-color: #B7B7B7;
+}
+
+textarea {
+    background-color: whitesmoke;
+}
+
+.error {
+    color: red;
+}
+
+.links {
+    margin-right: 15px;
+}

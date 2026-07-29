@@ -1,0 +1,6 @@
+<p>Olet kirjautunut nimellä {{ request.user.username }}</p>
+<p>
+    <a class="links" href="{% url 'profile' %}">Oma tili</a>
+    <a class="links" href="{% url 'messages' %}">Viestit</a>
+    <a class="links" href="{% url 'logout' %}">Kirjaudu ulos</a>
+</p>

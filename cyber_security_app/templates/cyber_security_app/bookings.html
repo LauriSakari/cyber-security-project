@@ -1,0 +1,28 @@
+{% extends "cyber_security_app/index.html" %}
+
+{% block content %}
+
+{% if info %}
+    <h1>Varaus vahvistettu, {{ request.user.username }}!</h1>
+    <p>Kiipeilet kayttajan {{ info.0 }} kanssa {{ info.1 }} klo {{ info.2 }} - {{ info.3 }} paikassa {{ info.4 }}</p>
+{% endif %}
+
+<h2>Varatut aikasi:</h2>
+<hr>
+{% for time in booked_times %}
+<i>Lahettaja:</i> {{ time.username }}
+<p>
+<i>Paivamaara:</i> {{ time.date_of_time }}
+<p>
+<i>Aloitusaika:</i> {{ time.start_time }}
+<p>
+<i>Lopetusaika:</i> {{ time.end_time }}
+<p></p>
+<i>Paikka:</i> {{ time.name }}
+<p></p>
+<hr>
+{% endfor %}
+
+<a href="/">Paluu</a>
+
+{% endblock %}

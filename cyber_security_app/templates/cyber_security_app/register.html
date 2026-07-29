@@ -1,0 +1,19 @@
+{% extends "cyber_security_app/index.html" %}
+
+{% block content %}
+<h1>Rekisteröityminen</h1>
+
+<form method="post" action="{% url 'add_user' %}">
+    {% csrf_token %}
+    <p>Tunnus:<br>
+    <input type="text" name="username"></p>
+    <p>Salasana:<br>
+    <input type="password" name="password"></p>
+    <p>Salasana uudestaan:<br>
+    <input type="password" name="verify_password"></p>
+    <input type="submit" value="Register">
+</form>
+
+<p><a href="{% url 'login' %}">Sinulla on jo tili? Kirjaudu sisään.</a></p>
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "cyber_security_app/index.html" %}
+
+{% block content %}
+
+Viestien määrä: {{ count }}
+<hr>
+{% for message in messages %}
+<i>Viesti:</i> {{ message.content }}
+<p>
+<i>Lähettäjä:</i> {{ message.user.username }}
+<p>
+<i>Aika:</i> {{ message.sent_at|date:"Y-m-d H:i:s" }}
+<p>
+{% if message.user == request.user %}
+    <form action="{% url 'remove_message' %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" value="{{ message.id }}" name="remove"/>
+    <button type="submit">Poista viesti</button>
+    </form>
+{% endif %}
+<hr>
+{% endfor %}
+
+<form action="{% url 'send_message' %}" method="post">
+    {% csrf_token %}
+    Viesti: <br>
+    <textarea name="content" rows="3" cols="40"></textarea>
+    <br>
+    <input type="submit" value="Lähetä">
+    </form>
+
+{% endblock %}
