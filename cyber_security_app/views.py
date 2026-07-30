@@ -16,7 +16,7 @@ def index(request):
     return render(request, "cyber_security_app/index.html")
 
 # This messages endpoint should be only accessible to authenticated users. 
-# Without login_required decorator, anyaone can access the messages without authentication.
+# Without login_required decorator, anyone can access the messages without authentication.
 
 #Fix: Add login_required decorator like below
 #@login_required
@@ -34,7 +34,7 @@ def messages(request):
 
 # This line causes a CSFR vulnerability
 @csrf_exempt
-# Fix is to remove this line and the import from the top of this file
+# Fix is to remove line above and the import from the top of this file
 @login_required
 def send_message(request):
     if request.method != "POST":
