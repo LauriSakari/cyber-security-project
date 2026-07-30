@@ -23,8 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-t8_l-a-b2ak-%9y6nm@cf15ik45!hpqzmwy==qrl&m(qm32d3f"
 
 # SECURITY WARNING: don't run with debug turned on in production!
+# This line (L27) causes security misconfiguration vulnerability in production mode.
 DEBUG = True
-
+# Fix is to set DEBUG = False as in L29 when in production mode and set it to True only in development.
+#DEBUG = False
 ALLOWED_HOSTS = []
 
 
