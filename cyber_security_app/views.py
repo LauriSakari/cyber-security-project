@@ -15,6 +15,10 @@ from .models import Message
 def index(request):
     return render(request, "cyber_security_app/index.html")
 
+# This messages endpoint should be only accessible to authenticated users. 
+# Without login_required decorator, anyaone can access the messages without authentication.
+
+#Fix: Add login_required decorator like below
 #@login_required
 def messages(request):
     message_list = Message.objects.select_related("user").order_by("-sent_at")
@@ -26,6 +30,8 @@ def messages(request):
             "count": message_list.count(),
         },
     )
+
+
 # This line causes a CSFR vulnerability
 @csrf_exempt
 # Fix is to remove this line and the import from the top of this file
