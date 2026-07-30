@@ -15,7 +15,7 @@ from .models import Message
 def index(request):
     return render(request, "cyber_security_app/index.html")
 
-@login_required
+#@login_required
 def messages(request):
     message_list = Message.objects.select_related("user").order_by("-sent_at")
     return render(
