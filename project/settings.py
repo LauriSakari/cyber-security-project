@@ -27,6 +27,7 @@ SECRET_KEY = "django-insecure-t8_l-a-b2ak-%9y6nm@cf15ik45!hpqzmwy==qrl&m(qm32d3f
 DEBUG = True
 # Fix is to set DEBUG = False as in L29 when in production mode and set it to True only in development.
 #DEBUG = False
+#If DEBUG is set to False, ALLOWED_HOSTS should also be set to the list below.
 ALLOWED_HOSTS = []
 
 

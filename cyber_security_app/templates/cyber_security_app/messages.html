@@ -5,7 +5,10 @@
 Viestien määrä: {{ count }}
 <hr>
 {% for message in messages %}
-<i>Viesti:</i> {{ message.content }}
+<!-- This line below causes XSS vulnerability. Django expect the content of the message to be safe, because of the safe filter.--> 
+<i>Viesti:</i> {{ message.content|safe }}
+<!--Fix is to remove the safe filter like below, so that the content of the message is escaped and not interpreted as HTML.-->
+<!-- <i>Viesti:</i> {{ message.content }} -->
 <p>
 <i>Lähettäjä:</i> {{ message.user.username }}
 <p>
