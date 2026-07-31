@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.shortcuts import redirect, render
 from django.utils import timezone
 
-#This line causes a CSFR vulnerability
+#This line makes CSFR vulnerability possible
 from django.views.decorators.csrf import csrf_exempt
 
 from .models import Message
