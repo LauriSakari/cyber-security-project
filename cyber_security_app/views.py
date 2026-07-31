@@ -94,7 +94,11 @@ def add_user(request):
             {"error": "Käyttäjänimi on jo varattu."},
         )
 
-    user = User.objects.create_user(username=username, password=password)
+    # This causes a cryptographic vulnerability because the password is stored in plain text without hashing it.
+    user = User(username=username, password=password)
+    user.save()
+    #fix is to use Django's built-in create_user method, that will hash the password before storing it in the database, like below.
+    #user = User.objects.create_user(username=username, password=password)
     auth_login(request, user)
     request.session["username"] = user.username
     return redirect("index")
