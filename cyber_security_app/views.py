@@ -5,8 +5,9 @@ from django.contrib.auth.models import User
 from django.shortcuts import redirect, render
 from django.utils import timezone
 
-#This line makes CSFR vulnerability possible
+#This line makes CSFR vulnerability possible because it imports csrf_exempt decorator, that is used in the send_message view
 from django.views.decorators.csrf import csrf_exempt
+#Fix is to remove the line above and the @csrf_exempt decorator from the send_message view.
 
 from .models import Message
 
